@@ -26,6 +26,9 @@ jobs:
           hugo-version: 'latest'
           extended: true
 
+      - name: Download Hugo modules (重要！)
+        run: hugo mod download
+        
       - name: Copy Markdown and assets
         run: |
           rm -rf content/posts 2>/dev/null || true
