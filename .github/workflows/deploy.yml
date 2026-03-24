@@ -1,0 +1,46 @@
+name: Deploy Hugo from private writing repo
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:   # 允许手动触发测试
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout writing-site (Hugo 配置)
+        uses: actions/checkout@v4
+
+      - name: Checkout private writing repo (Markdown + assets)
+        uses: actions/checkout@v4
+        with:
+          repository: yajw/writing          # ← 改成你的
+          token: ${{ secrets.WRITING_PAT }}       # ← 后面创建这个 Secret
+          path: content-source
+          ref: main
+
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: 'latest'
+          extended: true
+
+      - name: Copy Markdown and assets
+        run: |
+          rm -rf content/posts 2>/dev/null || true
+          mkdir -p content/posts
+          # 复制 Markdown（根据你的结构调整）
+          cp -r content-source/*.md content/posts/ 2>/dev/null || true
+          cp -r content-source/posts/* content/posts/ 2>/dev/null || true
+          # 复制图片文件夹（你的 ./assets/）
+          cp -r content-source/assets content/ 2>/dev/null || true
+
+      - name: Build with Hugo
+        run: hugo --minify
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public

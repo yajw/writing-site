@@ -1,0 +1,68 @@
+baseURL: "https://yajw.org/"
+title: "My Writing Space"
+languageCode: "zh-cn"
+theme: "hugo-PaperMod"
+
+module:
+  imports:
+    - path: github.com/adityatelange/hugo-PaperMod
+
+# ====================== 专注阅读核心配置 ======================
+params:
+  description: "我的写作空间"
+  author: "yajw"                    # 改成你的名字
+
+  # 阅读体验优化（减少打扰）
+  showReadingTime: true
+  showShareButtons: true
+  showToc: true                         # 文章目录
+  TocOpen: false                        # 默认收起目录，点击再展开
+  showPostNavLinks: true                # 文章底部上一篇/下一篇
+  showCodeCopyButtons: true             # 代码块一键复制
+
+  # Zen Mode（一键无干扰阅读模式）—— 强烈推荐
+  zenMode: true
+
+  # 首页和列表页保持简洁
+  profileMode:
+    enabled: false                      # 关闭大头像简介，减少干扰
+  home:
+    layout: "list"                      # 首页用列表布局（可改 grid）
+
+  # 颜色与质感（让它不单调）
+  colorScheme: "auto"                   # 自动跟随系统（light/dark）
+  defaultAppearance: "dark"             # 默认暗黑模式，更护眼
+
+  # 时间线相关（如果你想在文章里插入 Timeline）
+  # 可以直接用 shortcode，无需额外设置
+
+  # 社交图标（可选，保持简洁）
+  socialIcons:
+    - name: "github"
+      url: "https://github.com/yajw"
+    # - name: "twitter"
+    #   url: "https://twitter.com/你的账号"
+
+# ====================== 菜单配置（可选，保持简洁） ======================
+menu:
+  main:
+    - name: "首页"
+      url: "/"
+      weight: 1
+    - name: "归档"
+      url: "/archives/"
+      weight: 2
+    - name: "关于"
+      url: "/about/"
+      weight: 3
+
+# ====================== 其他常用设置 ======================
+markup:
+  highlight:
+    style: "github-dark"                # 代码高亮风格（暗黑友好）
+    noClasses: false
+
+taxonomies:
+  tag: "tags"
+
+  category: "categories"
