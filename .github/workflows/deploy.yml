@@ -5,6 +5,9 @@ on:
     branches: [ main ]
   workflow_dispatch:   # 允许手动触发测试
 
+permissions:
+  contents: write
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
