@@ -26,8 +26,13 @@ jobs:
           hugo-version: 'latest'
           extended: true
 
-      - name: Download Hugo modules (重要！)
-        run: hugo mod download
+      - name: Setup Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: 'stable'
+
+      - name: Download Hugo modules
+        run: hugo mod get
         
       - name: Copy Markdown and assets
         run: |
