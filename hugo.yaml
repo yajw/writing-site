@@ -35,9 +35,12 @@ menu:
     - name: "归档"
       url: "/archives/"
       weight: 2
+    - name: "标签"
+      url: "/tags/"
+      weight: 3
     - name: "关于"
       url: "/about/"
-      weight: 3
+      weight: 4
 
 markup:
   highlight:
