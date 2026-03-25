@@ -12,7 +12,7 @@ params:
 
   # PaperMod 主题参数（注意大小写）
   ShowReadingTime: true
-  ShowShareButtons: true
+  ShowShareButtons: false
   ShowToc: true
   TocOpen: false
   ShowPostNavLinks: true

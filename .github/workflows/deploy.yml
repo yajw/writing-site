@@ -3,7 +3,9 @@ name: Deploy Hugo from private writing repo
 on:
   push:
     branches: [ main ]
-  workflow_dispatch:   # 允许手动触发测试
+  workflow_dispatch:
+  repository_dispatch:
+    types: [ writing-updated ]
 
 permissions:
   contents: write
